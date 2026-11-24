@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { allPosts } from '../../lib';
+const posts = await allPosts();
+---
+<Base title="Writing" description="Essays and notes from Andrew Hyde on startups, community, minimalism and travel.">
+  <section class="section wrap">
+    <div class="section-head">
+      <h1 class="h">Writing</h1>
+      <p>I wrote more than 750 posts on the old blog. These are the ones worth keeping.</p>
+    </div>
+    <PostList posts={posts} filter />
+  </section>
+</Base>
+<style>
+  .section { padding-top: clamp(2rem, 5vw, 4rem); }
+  .h { font-size: clamp(3rem, 9vw, 7rem); line-height: .9; letter-spacing: -0.05em; margin: 0; font-variation-settings: 'wdth' 80; }
+</style>

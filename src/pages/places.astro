@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Places from '../components/Places.astro';
+---
+<Base title="Places" description="Countries and territories Andrew Hyde has visited.">
+  <section class="section wrap">
+    <div class="section-head">
+      <h1 class="h">Places I've been</h1>
+      <p>Countries and territories, with the UK nations counted on their own. Pick a region to light it up.</p>
+    </div>
+    <Places />
+  </section>
+</Base>
+<style>
+  .section { padding-top: clamp(2rem, 5vw, 4rem); }
+  .h { font-size: clamp(3rem, 9vw, 7rem); line-height: .9; letter-spacing: -0.05em; margin: 0; font-variation-settings: 'wdth' 80; }
+</style>

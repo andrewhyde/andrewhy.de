@@ -1,0 +1,11 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/bucket-list", "destination": "/goals/", "permanent": true },
+    { "source": "/posts", "destination": "/writing/", "permanent": true },
+    { "source": "/about", "destination": "/", "permanent": true },
+    { "source": "/feed", "destination": "/rss.xml", "permanent": true },
+    { "source": "/category/:path*", "destination": "/writing/", "permanent": true },
+    { "source": "/tag/:path*", "destination": "/writing/", "permanent": true }
+  ]
+}

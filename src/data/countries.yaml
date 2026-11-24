@@ -1,0 +1,17 @@
+# Countries and territories visited. UK nations and territories are listed separately.
+# Add a name to the right region; the site sorts them and never shows a total.
+regions:
+  - name: North America & the Caribbean
+    places: [Aruba, Belize, British Virgin Islands, Canada, Cayman Islands, Costa Rica, Cuba, El Salvador, Guatemala, Honduras, Mexico, Nicaragua, Panama, Puerto Rico, Saint Vincent and the Grenadines, USA, US Virgin Islands]
+  - name: South America
+    places: [Argentina, Brazil, Chile, Colombia, Ecuador]
+  - name: Europe
+    places: [Austria, Belarus, Belgium, Bosnia and Herzegovina, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, England, Estonia, Finland, France, Germany, Gibraltar, Greece, Guernsey, Hungary, Iceland, Ireland, Isle of Man, Italy, Jersey, Kosovo, Latvia, Luxembourg, Moldova, Netherlands, Northern Ireland, Norway, Poland, Portugal, Romania, Russia, San Marino, Scotland, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, Turkey, Ukraine, Vatican City, Wales]
+  - name: Middle East
+    places: [Bahrain, Jordan, Kuwait, Lebanon, Oman, Qatar, UAE, Yemen]
+  - name: Asia
+    places: [Azerbaijan, Brunei, China, Hong Kong, Indonesia, Japan, Laos, Malaysia, Mongolia, Myanmar, Nepal, Philippines, Singapore, South Korea, Sri Lanka, Taiwan, Thailand]
+  - name: Africa
+    places: [Kenya, Morocco]
+  - name: Oceania
+    places: [Australia, Guam, New Zealand, Northern Mariana Islands, Palau]

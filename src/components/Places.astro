@@ -1,0 +1,44 @@
+---
+import { data } from '../lib';
+const { regions } = data('countries');
+const all = regions
+  .flatMap((r: any) => r.places.map((p: string) => ({ name: p, region: r.name })))
+  .sort((a: any, b: any) => a.name.localeCompare(b.name));
+---
+<div class="places" data-places>
+  <div class="chips" role="group" aria-label="Show a region">
+    <button class="chip" aria-pressed="true" data-region="">Everywhere</button>
+    {regions.map((r: any) => <button class="chip" aria-pressed="false" data-region={r.name}>{r.name}</button>)}
+  </div>
+  <p class="cloud">
+    {all.map((p: any) => <span class="place" data-region={p.region} title={p.region}>{p.name}</span>)}
+  </p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-places]').forEach((root) => {
+    const chips = root.querySelectorAll<HTMLButtonElement>('.chip');
+    const places = root.querySelectorAll<HTMLElement>('.place');
+    chips.forEach((chip) =>
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+        const r = chip.dataset.region;
+        root.classList.toggle('filtered', !!r);
+        places.forEach((p) => p.classList.toggle('on', !!r && p.dataset.region === r));
+      }),
+    );
+  });
+</script>
+
+<style>
+  .cloud { margin: 0; line-height: 1.12; font-size: clamp(1.45rem, 3.4vw, 2.6rem); font-weight: 600; letter-spacing: -0.03em; }
+  .place {
+    display: inline-block; margin-right: .45em; white-space: nowrap; cursor: default;
+    font-variation-settings: 'wdth' 78;
+    transition: font-variation-settings .4s var(--ease), color .3s, opacity .35s;
+  }
+  .place:hover { font-variation-settings: 'wdth' 100; color: var(--sky); }
+  .filtered .place { opacity: .16; }
+  .filtered .place.on { opacity: 1; color: var(--pine); font-variation-settings: 'wdth' 100; }
+  .filtered .place.on:hover { color: var(--sky); }
+</style>

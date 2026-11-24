@@ -1,0 +1,19 @@
+name: Andrew Hyde
+location: Boulder, Colorado
+email: andrew@andrewhy.de   # rip inbox
+intro: >-
+  I build communities and lead companies that grow out of them. My career has been spent putting interesting people in the same room, fighting for the little guy, and building for the communal good. I try to ski 70 days a year and volunteer as much as I can. 
+outro: >-
+  These days I'm racing Ironman, reading more than I write, and still collecting countries.
+links:
+  - { label: X / Twitter, url: "https://x.com/unicorn" }
+  - { label: LinkedIn, url: "https://www.linkedin.com/in/andrewhyde" }
+  - { label: Instagram, url: "https://www.instagram.com/andrewhyde" }
+built:
+  - { name: Startup Weekend, blurb: "A 54-hour event where strangers form teams and launch a company. It spread to cities in more than 100 countries." }
+  - { name: Startup Week, blurb: "Started in Boulder as a week of free, founder-led events. Now runs in cities worldwide." }
+  - { name: /r/boulder, blurb: "Moderated the Boulder subreddit with some other internet friends.", url: "https://www.reddit.com/r/boulder/" }
+  - { name: Ignite Boulder, blurb: "Five minutes, 20 slides, auto-advancing. Brought to Boulder in 2008 ." }
+  - { name: TEDxBoulder, blurb: "An independently organized TED event for the Boulder community. Ran for a ~14 year run of sold out events with millions of views." }
+  - { name: This Book is About Travel, blurb: "A travel book written on the road that reached number one in the travel sections of iBooks and Amazon." }
+  - { name: Trident Booksellers & Cafe, blurb: "Five years as a co-owner of my favorite cafe in the world, on Pearl Street in Boulder." }

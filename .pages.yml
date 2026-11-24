@@ -1,0 +1,98 @@
+# Pages CMS (https://pagescms.org) — sign in with GitHub, pick this repo, and edit.
+# Every save is a commit; your host rebuilds the site automatically.
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: posts
+    label: Writing
+    type: collection
+    path: src/content/posts
+    filename: "{primary}.md"
+    view:
+      fields: [title, category, date]
+      primary: title
+      sort: [date, title]
+      default: { sort: date, order: desc }
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - name: category
+        label: Topic
+        type: select
+        options:
+          creatable: true
+          values: [Travel, Startups, Community, Minimalism, Hacks, Spec Work, Conferences, Business, Adventure, Observations, Notes]
+      - { name: date, label: Published, type: date }
+      - { name: description, label: Short description, type: text, description: Shown under the title and in link previews. }
+      - { name: cover, label: Cover image, type: image }
+      - { name: stub, label: Placeholder (not yet rescued), type: boolean, default: false, description: Leave off for new posts. }
+      - { name: originalUrl, label: Original URL, type: string, hidden: true }
+      - { name: order, label: Order, type: number, hidden: true }
+      - { name: body, label: Post, type: rich-text }
+
+  - name: site
+    label: About & contact
+    type: file
+    path: src/data/site.yaml
+    format: yaml
+    fields:
+      - { name: name, label: Name, type: string }
+      - { name: location, label: Location, type: string }
+      - { name: email, label: Email, type: string }
+      - { name: intro, label: Intro, type: text }
+      - { name: outro, label: Second line, type: text }
+      - name: links
+        label: Links
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: url, label: URL, type: string }
+      - name: built
+        label: Things I started
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: blurb, label: One-liner, type: text }
+          - { name: url, label: Link (optional), type: string }
+
+  - name: goals
+    label: Goals
+    type: file
+    path: src/data/goals.yaml
+    format: yaml
+    fields:
+      - { name: intro, label: Intro, type: text }
+      - name: sections
+        label: Sections
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Section, type: string }
+          - name: goals
+            label: Goals
+            type: object
+            list: true
+            fields:
+              - { name: goal, label: Goal, type: string }
+              - name: status
+                label: Status
+                type: select
+                options: { values: [done, progress, not-planned] }
+              - { name: note, label: Note, type: string }
+
+  - name: countries
+    label: Places
+    type: file
+    path: src/data/countries.yaml
+    format: yaml
+    fields:
+      - name: regions
+        label: Regions
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Region, type: string }
+          - { name: places, label: Countries & territories, type: string, list: true }

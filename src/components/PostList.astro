@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { posts: CollectionEntry<'posts'>[]; filter?: boolean; }
+const { posts, filter = false } = Astro.props;
+const cats = [...new Set(posts.map((p) => p.data.category))];
+---
+<div class="postlist" data-postlist>
+  {filter && (
+    <div class="chips" role="group" aria-label="Filter by topic">
+      <button class="chip" aria-pressed="true" data-cat="">Everything</button>
+      {cats.map((c) => <button class="chip" aria-pressed="false" data-cat={c}>{c}</button>)}
+    </div>
+  )}
+  <ol class="posts" role="list">
+    {posts.map((p) => (
+      <li data-cat={p.data.category}>
+        <a href={`/${p.id}/`}>
+          <span class="t">{p.data.title}</span>
+          <span class="meta">{p.data.category}{p.data.date && <> <span class="yr">{p.data.date.getUTCFullYear()}</span></>}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-postlist]').forEach((root) => {
+    const chips = root.querySelectorAll<HTMLButtonElement>('.chip');
+    chips.forEach((chip) =>
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+        const cat = chip.dataset.cat;
+        root.querySelectorAll<HTMLElement>('li[data-cat]').forEach((li, i) => {
+          const show = !cat || li.dataset.cat === cat;
+          li.hidden = !show;
+          if (show) { li.style.animation = 'none'; li.offsetHeight; li.style.animation = ''; li.style.animationDelay = `${Math.min(i, 12) * 25}ms`; }
+        });
+      }),
+    );
+  });
+</script>
+
+<style>
+  .posts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--granite-deep); }
+  li { border-bottom: 1px solid var(--granite-deep); animation: rise .35s var(--ease) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } }
+  a {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .25rem 2rem; align-items: baseline;
+    padding: 1.05rem .75rem; margin-inline: -.75rem; text-decoration: none; border-radius: 10px;
+    transition: background .25s, padding .3s var(--ease);
+  }
+  a:hover { background: var(--granite); color: var(--pine); padding-left: 1.25rem; }
+  .t { font-family: var(--serif); font-size: var(--step-1); line-height: 1.25; font-variation-settings: 'opsz' 36; }
+  a:hover .t { color: var(--sky); }
+  .meta { font-size: var(--step--1); color: var(--pine-soft); white-space: nowrap; }
+  .yr { margin-left: .6rem; font-variant-numeric: tabular-nums; }
+  @media (max-width: 600px) { a { grid-template-columns: 1fr; } }
+</style>

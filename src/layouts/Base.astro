@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import { data } from '../lib';
+
+interface Props { title?: string; description?: string; image?: string; }
+const site = data('site');
+const { title, description = site.intro, image = '/images/og.jpg' } = Astro.props;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name}`;
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/writing/', label: 'Writing' },
+  { href: '/goals/', label: 'Goals' },
+  { href: '/places/', label: 'Places' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="alternate" type="application/rss+xml" title="Andrew Hyde" href="/rss.xml" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2317322a'/><text x='16' y='22.5' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='17' fill='%23f6f7f5'>h</text></svg>" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-head">
+      <div class="wrap">
+        <a class="logo" href="/" aria-label="Andrew Hyde, home">andrewhy<span>.de</span></a>
+        <nav class="nav" aria-label="Main">
+          {nav.map((n) => <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>)}
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-foot" id="contact">
+      <div class="wrap">
+        <p style="margin:0 0 1rem;color:#b9c6bf">Say hello</p>
+        <a class="foot-cta" href={`mailto:${site.email}`}>{site.email}</a>
+        <div class="foot-row">
+          <span>{site.name}, {site.location}</span>
+          <nav aria-label="Elsewhere">{site.links.map((l: any) => <a href={l.url} rel="me">{l.label}</a>)}</nav>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

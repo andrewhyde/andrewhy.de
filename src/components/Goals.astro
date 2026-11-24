@@ -1,0 +1,79 @@
+---
+import { data } from '../lib';
+const goals = data('goals');
+const label = { done: 'Done', progress: 'In progress', 'not-planned': 'Not planned' } as Record<string, string>;
+---
+<div class="goals" data-goals>
+  <div class="chips" role="tablist" aria-label="Goal categories">
+    {goals.sections.map((s: any, i: number) => (
+      <button class="chip" role="tab" id={`gt-${i}`} aria-controls={`gp-${i}`} aria-selected={i === 0 ? 'true' : 'false'} aria-pressed={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>{s.name}</button>
+    ))}
+  </div>
+  {goals.sections.map((s: any, i: number) => {
+    const done = s.goals.filter((g: any) => g.status === 'done').length;
+    return (
+      <section class="panel" role="tabpanel" id={`gp-${i}`} aria-labelledby={`gt-${i}`} hidden={i !== 0}>
+        <p class="tally"><strong>{done}</strong> of {s.goals.length} done</p>
+        <div class="bar" aria-hidden="true"><span style={`--p:${done / s.goals.length}`}></span></div>
+        <ul role="list">
+          {s.goals.map((g: any, j: number) => (
+            <li class={g.status} style={`--d:${j * 35}ms`}>
+              <span class="mark" role="img" aria-label={label[g.status]}>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10.5" />
+                  {g.status === 'done' && <path d="M7 12.5l3.2 3.2L17 8.8" />}
+                  {g.status === 'progress' && <path class="half" d="M12 1.5a10.5 10.5 0 0 1 0 21z" />}
+                </svg>
+              </span>
+              <span class="g">{g.goal}{g.note && <span class="note">{g.note}</span>}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
+  })}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-goals]').forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role=tab]')];
+    const select = (t: HTMLButtonElement) => {
+      tabs.forEach((x) => {
+        const on = x === t;
+        x.setAttribute('aria-selected', String(on));
+        x.setAttribute('aria-pressed', String(on));
+        x.tabIndex = on ? 0 : -1;
+        root.querySelector<HTMLElement>('#' + x.getAttribute('aria-controls'))!.hidden = !on;
+      });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(t));
+      t.addEventListener('keydown', (e) => {
+        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { const n = tabs[(i + d + tabs.length) % tabs.length]; n.focus(); select(n); }
+      });
+    });
+  });
+</script>
+
+<style>
+  .tally { margin: 0 0 .6rem; color: var(--pine-soft); }
+  .tally strong { color: var(--pine); font-size: var(--step-2); font-weight: 700; margin-right: .2rem; }
+  .bar { height: 6px; background: var(--granite); border-radius: 99px; overflow: hidden; margin-bottom: 2rem; }
+  .bar span { display: block; height: 100%; background: var(--rust); border-radius: inherit; transform-origin: left; transform: scaleX(var(--p)); animation: grow .9s var(--ease); }
+  @keyframes grow { from { transform: scaleX(0); } }
+  ul { list-style: none; padding: 0; margin: 0; columns: 2 320px; column-gap: 3rem; }
+  li { display: flex; gap: .85rem; align-items: flex-start; padding-block: .55rem; break-inside: avoid; animation: rise .4s var(--ease) both; animation-delay: var(--d); }
+  @keyframes rise { from { opacity: 0; transform: translateY(5px); } }
+  .mark { flex: none; width: 1.35rem; height: 1.35rem; margin-top: .12rem; }
+  svg { width: 100%; height: 100%; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  circle { stroke: var(--granite-deep); }
+  .done circle { fill: var(--rust); stroke: var(--rust); }
+  .done path { stroke: #fff; stroke-dasharray: 16; stroke-dashoffset: 16; animation: tick .5s var(--ease) forwards; animation-delay: calc(var(--d) + 200ms); }
+  @keyframes tick { to { stroke-dashoffset: 0; } }
+  .progress circle { stroke: var(--rust); }
+  .progress .half { fill: var(--rust); stroke: none; }
+  .g { font-size: var(--step-0); }
+  .not-planned .g { color: var(--pine-soft); }
+  .note { display: block; font-size: var(--step--1); color: var(--pine-soft); }
+</style>

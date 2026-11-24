@@ -1,0 +1,11 @@
+# Old WordPress paths → new pages (Netlify and Cloudflare Pages read this file)
+/bucket-list/*   /goals/      301
+/bucket-list     /goals/      301
+/posts/*         /writing/    301
+/posts           /writing/    301
+/about/*         /            301
+/about           /            301
+/feed/*          /rss.xml     301
+/feed            /rss.xml     301
+/category/*      /writing/    301
+/tag/*           /writing/    301
