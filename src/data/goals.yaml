@@ -1,66 +1,125 @@
-# Bucket list, rescued from andrewhy.de/bucket-list (statuses as of 12/22 unless noted).
-# status: done | progress | not-planned   ·   note: optional text shown beside the goal
 intro: A public place to put my life's bucket list. Have a suggestion? Send it over.
 sections:
   - name: Travel
     goals:
-      - { goal: Go to Alaska and build a cabin, status: done }
-      - { goal: Go to Athens and remark on the history, status: done }
-      - { goal: Go to Barcelona and party, status: done }
-      - { goal: Go to Hawaii and surf, status: done }
-      - { goal: Go to Singapore and talk business, status: done }
-      - { goal: Go to Japan and note the fashion, status: done }
-      - { goal: Go to Mexico and see tequila being made, status: done }
-      - { goal: Go to Nepal and trek, status: done }
-      - { goal: Go to France and ride a few stages of the Tour de France, status: done }
-      - { goal: Go to all 50 US states, status: done, note: Maine was the final one }
-      - { goal: Dive in the Great Barrier Reef, status: done }
-      - { goal: Go to 25 countries, status: done }
-      - { goal: Go to 50 countries, status: done }
-      - { goal: Go to 100 countries, status: done }
-      - { goal: Live 3+ months on each continent, status: progress, note: "North America, Europe, Oceania" }
+      - goal: Go to Alaska and build a cabin
+        status: done
+      - goal: Go to Athens and remark on the history
+        status: done
+      - goal: Go to Barcelona and party
+        status: done
+      - goal: Go to Hawaii and surf
+        status: done
+      - goal: Go to Singapore and talk business
+        status: done
+      - goal: Go to Japan and note the fashion
+        status: done
+      - goal: Go to Mexico and see tequila being made
+        status: done
+      - goal: Go to Nepal and trek
+        status: done
+      - goal: Go to France and ride a few stages of the Tour de France
+        status: done
+      - goal: Go to all 50 US states
+        status: done
+        note: Maine was the final one
+      - goal: Dive in the Great Barrier Reef
+        status: done
+      - goal: Go to 25 countries
+        status: done
+      - goal: Go to 50 countries
+        status: done
+      - goal: Go to 100 countries
+        status: done
+      - goal: Live 3+ months on each continent
+        status: progress
+        note: North America, Europe, Oceania
   - name: Athletic
     goals:
-      - { goal: Half marathon, status: done }
-      - { goal: Marathon, status: done }
-      - { goal: Sub 4 hour marathon, status: not-planned }
-      - { goal: Half Ironman, status: done }
-      - { goal: Ironman, status: done, note: "Texas, Canada and Tours" }
-      - { goal: "Climb 14 14,000 foot mountains", status: progress, note: 8 of 14 }
-      - { goal: Climb Denali, status: not-planned }
-      - { goal: Climb Kilimanjaro, status: not-planned }
-      - { goal: Bike across the US, status: done }
-      - { goal: 100 pullups in a workout, status: done }
-      - { goal: 100 consecutive pushups, status: done }
-      - { goal: Dunk a basketball, status: not-planned }
-      - { goal: Standing backflip, status: not-planned }
-      - { goal: "Abs, the man wants abs", status: not-planned }
+      - goal: Half marathon
+        status: done
+      - goal: Marathon
+        status: done
+      - goal: Sub 4 hour marathon
+        status: not-planned
+      - goal: Half Ironman
+        status: done
+      - goal: Ironman
+        status: done
+        note: Ironman Texas (2024), Ironman Canada (2025) and Ironman Tours, France
+          (2026)
+      - goal: Climb 14 14,000 foot mountains
+        status: progress
+        note: 8 of 14
+      - goal: Climb Denali
+        status: not-planned
+      - goal: Climb Kilimanjaro
+        status: not-planned
+      - goal: Bike across the US
+        status: done
+      - goal: 100 pullups in a workout
+        status: done
+      - goal: 100 consecutive pushups
+        status: done
+      - goal: Dunk a basketball
+        status: not-planned
+      - goal: Standing backflip
+        status: not-planned
+      - goal: Abs, the man wants abs
+        status: not-planned
   - name: Experience
     goals:
-      - { goal: Sunrise above 3000m, status: done }
-      - { goal: Build the cabin you live in, status: done }
-      - { goal: Opening pitch at an MLB game, status: not-planned }
-      - { goal: See Barcelona play a home game, status: not-planned }
-      - { goal: "17,000 feet", status: done }
-      - { goal: French Laundry, status: not-planned }
-      - { goal: Get married, status: not-planned }
-      - { goal: Learn another language, status: not-planned }
+      - goal: Sunrise above 3000m
+        status: done
+      - goal: Build the cabin you live in
+        status: done
+      - goal: Opening pitch at an MLB game
+        status: not-planned
+      - goal: See Barcelona play a home game
+        status: not-planned
+      - goal: 17,000 feet
+        status: done
+      - goal: French Laundry
+        status: not-planned
+      - goal: Get married
+        status: not-planned
+      - goal: Learn another language
+        status: not-planned
   - name: Professional
     goals:
-      - { goal: Finish middle school, status: done }
-      - { goal: Finish college, status: done }
-      - { goal: Finish grad school, status: not-planned }
-      - { goal: Get a PhD, status: not-planned }
-      - { goal: Start a company, status: done }
-      - { goal: Sell a company, status: done }
-      - { goal: Work for a startup, status: done }
-      - { goal: Work for a big company, status: done }
-      - { goal: Employ a staff, status: done }
-      - { goal: Run a big company, status: done }
-      - { goal: Have $1M in the bank, status: done }
-      - { goal: Give $1M away, status: done }
-      - { goal: Mentioned in the Boston Globe, status: done, note: Front page of the business section }
-      - { goal: Mentioned in the New York Times, status: done }
-      - { goal: Mentioned in the Washington Post, status: done }
-      - { goal: Write a New York Times bestseller, status: not-planned }
-      - { goal: Buy Trident Booksellers and Cafe, status: done, note: Since sold }
+      - goal: Finish middle school
+        status: done
+      - goal: Finish college
+        status: done
+      - goal: Finish grad school
+        status: not-planned
+      - goal: Get a PhD
+        status: not-planned
+      - goal: Start a company
+        status: done
+      - goal: Sell a company
+        status: done
+      - goal: Work for a startup
+        status: done
+      - goal: Work for a big company
+        status: done
+      - goal: Employ a staff
+        status: done
+      - goal: Run a big company
+        status: done
+      - goal: Have $1M in the bank
+        status: done
+      - goal: Give $1M away
+        status: done
+      - goal: Mentioned in the Boston Globe
+        status: done
+        note: Front page of the business section
+      - goal: Mentioned in the New York Times
+        status: done
+      - goal: Mentioned in the Washington Post
+        status: done
+      - goal: Write a New York Times bestseller
+        status: not-planned
+      - goal: Buy Trident Booksellers and Cafe
+        status: done
+        note: Since sold
